@@ -1,0 +1,43 @@
+<%- include('partials/head')%>
+<body class="inputForm">
+	<%- include('partials/navbar') %>
+	<div class="parallax"></div>
+	<h1>Hey There. Welcome Back.</h1>
+	<div class="small-container">
+		<div class="form">
+			<form id="signin-form" action="/login" method="POST">
+				<%- include('partials/flash') %>
+				<ul class="form-container">
+					<li>
+					  <label for="email">Email</label>
+					  <input type="email" name="email" id="email" class="u-full-width" value="<%=email%>"required>
+					</li>
+					<li>
+					  <label for="password">Password</label>
+					  <input type="password" id="password" name="password" class="u-full-width" required autocomplete="on">
+					</li>
+					<li>
+					  <button type="submit" class="button-primary primary u-full-width" value="Login">
+						Sign In
+					  </button>
+					</li>
+					<li>
+						<div>New User? 
+							<a href="/register">Create your account</a>
+						</div>
+					</li>
+				  </ul>
+			</form>
+		</div>
+    </div>
+	<%- include('partials/footer') %>
+	<script>
+        var counter = Math.floor(Math.random() * 4);
+        $(document).ready(function(){
+            filePath = "url(/img/background" + counter + ".jpeg)";
+		    $(".parallax").css({"background-image":filePath});
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+<%- include('partials/head')%>
+<body class="inputForm">
+	<%- include('partials/navbar') %>
+	<div class="parallax"></div>
+	<h1>Hit Us Up. We're Always Listening.</h1>
+	<div class="small-container">
+		<div class="form">
+			<form id="contact-form">
+				<ul class="contact-form-container">
+					<li>
+					  <label for="name">Name</label>
+					  <input type="name" name="name" placeholder="Name" required="" class="u-full-width" id="name" required>
+					</li>
+					<br>
+					<li>
+					  <label for="email">Email</label>
+					  <input type="email" name="email" id="email" placeholder="Email" class="u-full-width" required>
+					</li>
+					<br>
+					<li>
+					  <label for="re-password">Inquiry</label>
+					  <textarea placeholder="Inquiry" class="u-full-width" required></textarea>
+					</li>
+					<br>
+					<li>
+					  <button type="submit" class="button-primary u-full-width primary" value="Submit">
+						Send
+					  </button>
+					</li>
+					<li>
+					  <div>
+						<br>
+						Please call us at 050 123 4567 or email us at help@jabr.com for immediate assistance.
+					  </div>
+					</li>
+				  </ul>
+			</form>
+
+		</div>
+     	
+    </div>
+	<%- include('partials/footer') %>
+	<script>
+        var counter = Math.floor(Math.random() * 4);
+        $(document).ready(function(){
+            filePath = "url(/img/background" + counter + ".jpeg)";
+		    $(".parallax").css({"background-image":filePath});
+        });
+    </script>
+</body>
+</html>

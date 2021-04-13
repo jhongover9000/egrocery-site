@@ -1,0 +1,81 @@
+<%- include('partials/head')%>
+<body>
+	<%- include('partials/navbar') %>
+	<%- include('partials/flash') %>
+	<!-- Header -->
+	<header>
+		<div id="backgroundImage"></div>
+		<div id="backgroundImageOverlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-2">
+					<h1 class="head">Welcome to JABR Online.</h1>
+					<p>Enjoy great deals and a comfortable online shopping experience.</p>
+					<a href="/products" class="btn">Shop Now →</a>
+				</div>
+			</div>
+		</div>
+		<div id="scrollDown">
+			<br>
+			<br>
+			<p>Or Scroll Down for More</p>
+			<i class="arrow down"></i>
+		</div>
+	</header>
+
+	<!-- Featured Categories -->
+	<!-- <div class="categories">
+		<div class="small-container">
+			<div class="row">
+				<div class="col-3">
+					<img src="./assets/category-1.jpg" alt="category 1">
+				</div>
+				<div class="col-3">
+					<img src="./assets/category-2.jpg" alt="category 2">
+				</div>
+				<div class="col-3">
+					<img src="./assets/category-3.jpg" alt="category 3">
+				</div>
+			</div>
+		</div>
+	</div> -->
+
+	<!-- Featured Products -->
+		<div class="small-container">
+			<h2 class="title">Featured Products</h2>
+			<%- include('partials/productTile', {products: featuredProducts}); %>
+
+			<h2 class="title">Latest Products</h2>
+			<%- include('partials/productTile', {products: latestProducts}); %>
+
+		</div>
+
+	<%- include('partials/footer') %>
+
+	<script>
+		// change background
+		var counter = Math.floor(Math.random() * 4);
+		var filePath = "url(/img/background" + counter + ".jpeg)";
+				$("#backgroundImage").css({"background-image":filePath});
+		var imageShift = setInterval(changeImage, 10000);
+		function changeImage(){
+			counter++;
+			if(counter > 4){
+				counter = 0;
+			}
+			else{
+				$("#backgroundImage").fadeOut(1000, function(){
+					filePath = "url(/img/background" + counter + ".jpeg)";
+					$("#backgroundImage").css({"background-image":filePath});
+				});
+				$("#backgroundImage").fadeIn(1000);
+			}
+		}
+		$("#scrollDown").click(function(){
+			const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+			const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+			scrollTo(0, 1.1*vh);
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<%- include('partials/head')%>
+<body class="inputForm">
+	<%- include('partials/navbar') %>
+  <div class="parallax"></div>
+	<h1>One Account. Endless Possibilities.</h1>
+    <main class="small-container">
+      <%- include('partials/flash') %>
+      <div class="form">
+        <form id="register-form" action="/register" method="POST">
+          <ul class="form-container">
+            <li>
+              <div class="twelve">
+                <label for="name">First Name</label>
+                <input type="name" name="firstName" required class="u-full-width" id="name">
+              </div>
+            </li>
+            <li>
+              <div class="twelve">
+                <label for="name">Last Name</label>
+                <input type="name" name="lastName" required class="u-full-width" id="name">
+              </div>
+            </li>
+            <li>
+              <div class="twelve">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" class="u-full-width" required>
+              </div>
+            </li>
+            <li>
+              <div class="twelve">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required class="u-full-width" autocomplete="on">
+              </div>
+            </li>
+            <li>
+              <div class="twelve">
+                <label for="re-password">Re-Enter Password</label>
+                <input type="password" id="re-password" name="re-password" required class="u-full-width" autocomplete="on">
+              </div>
+            </li>
+            <li>
+              <button type="submit" class="button-primary u-full-width primary" id="register" value="Register">
+                Register
+              </button>
+            </li>
+            <li>
+              <div>Already have an account?
+                <a href="/login"> Sign-In </a>
+              </div>
+            </li>
+          </ul>
+        </form>
+      </div>
+    </main>
+    <script>
+    	var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password"), email = document.getElementById("email");
+
+		function validatePassword(){
+			if(password.value != confirm_password.value) {
+		    	confirm_password.setCustomValidity("Passwords Don't Match");
+		  	} else {
+		    	confirm_password.setCustomValidity('');
+		  	}
+		}
+
+		function validateEmail(){
+			const res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  			if (res.test(email.value)){
+  				email.setCustomValidity('');
+			} else {
+				email.setCustomValidity("Not a Valid Email");
+			}
+		}
+
+		password.onchange = validatePassword;
+		confirm_password.onkeyup = validatePassword;
+		register.onclick = validateEmail;
+
+    </script>
+  </div>
+	<%- include('partials/footer') %>
+  <script>
+    var counter = Math.floor(Math.random() * 4);
+    $(document).ready(function(){
+        filePath = "url(/img/background" + counter + ".jpeg)";
+    $(".parallax").css({"background-image":filePath});
+    });
+</script>
+</body>
+</html>
